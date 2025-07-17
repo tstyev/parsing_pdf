@@ -13,5 +13,4 @@ jobs:
     steps:
       - uses: styfle/cancel-workflow-action@0.12.1
         with:
-          workflow_id: ci.yml
-          access_token: ${{ secrets.GITHUB_TOKEN }}
+          all_but_latest: true
