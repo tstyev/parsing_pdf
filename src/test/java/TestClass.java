@@ -5,7 +5,7 @@ public class TestClass {
     @Test
     void test() throws InterruptedException {
         System.out.println("test");
-        Thread.sleep(50000);
+        Thread.sleep(30000);
         assert 1 == 1;
     }
 }
