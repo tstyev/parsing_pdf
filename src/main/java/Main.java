@@ -8,21 +8,30 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String pathToPdf = "transactions.pdf";
-        String pdfText = "";
+//        String pathToPdf = "transactions.pdf";
+//        String pdfText = "";
+//
+//        try (PDDocument document = Loader.loadPDF(new File(pathToPdf))) {
+//            PDFTextStripper pdfStripper = new PDFTextStripper();
+//            pdfText = pdfStripper.getText(document);
+//        } catch (IOException e) {
+//            System.err.println("Ошибка чтения PDF: " + e.getMessage());
+//            return;
+//        }
+//
+//        List<Transaction> transactions = Parse.parseTransactionsFromText(pdfText);
+//
+//        for (Transaction t : transactions) {
+//            System.out.println(t);
+//        }
 
-        try (PDDocument document = Loader.loadPDF(new File(pathToPdf))) {
-            PDFTextStripper pdfStripper = new PDFTextStripper();
-            pdfText = pdfStripper.getText(document);
+        String filePath = "test.xlsx";
+
+        try {
+            List<Transaction> tr = ExcelParse.readTransactions(filePath);
+            tr.forEach(System.out::println);
         } catch (IOException e) {
-            System.err.println("Ошибка чтения PDF: " + e.getMessage());
-            return;
-        }
-
-        List<Transaction> transactions = Parse.parseTransactionsFromText(pdfText);
-
-        for (Transaction t : transactions) {
-            System.out.println(t);
+            e.printStackTrace();
         }
     }
 }
